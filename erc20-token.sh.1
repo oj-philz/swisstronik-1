@@ -165,8 +165,7 @@ async function main() {
   const contractAddress = "$CONTRACT_ADDRESS";
   const [signer] = await hre.ethers.getSigners();
 
-  const contractFactory = await hre.ethers.getContractFactory("TestToken");
-  const contract = contractFactory.attach(contractAddress);
+  const contract = await ethers.getContractAt('TestToken', contractAddress);
 
   const functionName = "mint100tokens";
   const mint100TokensTx = await sendShieldedTransaction(
@@ -205,8 +204,7 @@ async function main() {
   const replace_contractAddress = "$CONTRACT_ADDRESS";
   const [signer] = await hre.ethers.getSigners();
 
-  const replace_contractFactory = await hre.ethers.getContractFactory("TestToken");
-  const contract = replace_contractFactory.attach(replace_contractAddress);
+  const contract = await ethers.getContractAt('TestToken', replace_contractAddress);
 
   const replace_functionName = "transfer";
   const replace_functionArgs = ["0x16af037878a6cAce2Ea29d39A3757aC2F6F7aac1", "1"];
